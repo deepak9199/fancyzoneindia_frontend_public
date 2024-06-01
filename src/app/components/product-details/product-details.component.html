@@ -1,0 +1,177 @@
+<!-- breadcrumb area start -->
+<div class="breadcrumb-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="breadcrumb-wrap">
+          <nav aria-label="breadcrumb">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="index.html"><i class="fa fa-home"></i></a>
+              </li>
+              <li class="breadcrumb-item"><a href="shop.html">shop</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                product details
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- breadcrumb area end -->
+
+<!-- page main wrapper start -->
+<div class="shop-main-wrapper section-padding pb-0">
+  <div class="container">
+    <div class="row">
+      <!-- product details wrapper start -->
+      <div class="col-lg-12 order-1 order-lg-2">
+        <!-- product details inner end -->
+        <div class="product-details-inner">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="product-large-slider">
+                <div class="pro-large-img ">
+
+                  <lightgallery [settings]="settings">
+                    <a href="{{product?.imageUrl1 }}" data-md-size="600-600" data-lg-thumbnail="product?.imageUrl[0]  ">
+                      <img class="pri-img" [src]="product?.imageUrl1 " />
+                    </a>
+                  </lightgallery>
+                </div>
+                <div class="pro-large-img ">
+                  <lightgallery [settings]="settings">
+                    <a href="{{product?.imageUrl2 }}" data-md-size="600-600" data-lg-thumbnail="product?.imageUrl[1]  ">
+                      <img class="pri-img" [src]="product?.imageUrl2 " />
+                    </a>
+                  </lightgallery>
+                </div>
+                <div class="pro-large-img ">
+
+                  <lightgallery [settings]="settings">
+                    <a href="{{ product?.imageUrl3 }}" data-md-size="600-600"
+                      data-lg-thumbnail="product?.imageUrl[2]  ">
+                      <img class="pri-img" [src]="product?.imageUrl3 " />
+                    </a>
+                  </lightgallery>
+                </div>
+
+                <div class="pro-large-img ">
+                  <lightgallery [settings]="settings">
+                    <a href="{{ product?.imageUrl4 }}" data-md-size="600-600"
+                      data-lg-thumbnail="product?.imageUrl[3]  ">
+                      <img class="pri-img" [src]="product?.imageUrl4 " />
+                    </a>
+                  </lightgallery>
+                </div>
+              </div>
+              <div class="pro-nav slick-row-10 slick-arrow-style">
+                <div class="pro-nav-thumb">
+                  <img src="{{ product?.imageUrl1 }}" />
+                </div>
+                <div class="pro-nav-thumb">
+                  <img src="{{ product?.imageUrl2 }}" />
+                </div>
+                <div class="pro-nav-thumb">
+                  <img src="{{ product?.imageUrl3 }}" />
+                </div>
+                <div class="pro-nav-thumb">
+                  <img src="{{ product?.imageUrl4 }}" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="product-details-des">
+                <h3 class="product-name">{{ product?.category }} ( sku : {{product?.sku}} )</h3>
+
+                <div class="price-box">
+                  <span class="price-regular" style="color: #81ca33">₹ {{ product?.price }}</span>
+                </div>
+
+                <div *ngIf="product.stocks >0" class="availability">
+                  <i class="fa fa-check-circle"></i>
+                  <span> in stock</span>
+                </div>
+                <div *ngIf="product.stocks <= 0" class="availability">
+                  <i class="fa fa-check-circle"></i>
+                  <span>Out in stock</span>
+                </div>
+                <div class="availability">
+                  <div class="quantity-cart-box d-flex align-items-center">
+                    <h6 class="option-title">qty:</h6>
+                    <div class="quantity">
+                      <div class="pro-qty">
+                        <input #quantityInput type="number" value="1" />
+                      </div>
+                    </div>
+                    <div class="action_link">
+                      <a class="btn btn-cart2" (click)="addToCart()">Add to cart</a>
+                    </div>
+                  </div>
+                  <div class="pro-size">
+                    <h6 class="option-title">color :</h6>
+                    <div class="size-box" *ngFor="let data of color; index as i"
+                      [ngClass]="{ 'active': selectedColorIndex === i }">
+                      <a (click)="updatedColor(i)">{{ data }}</a>
+                    </div>
+                  </div>
+                  <div class="pro-size" *ngIf="sizes && sizes.length > 0">
+                    <h6 class="option-title">size :</h6>
+                    <div class="size-box" *ngFor="let size of sizes; index as i"
+                      [ngClass]="{ 'active': selectedSizeIndex === i }">
+                      <a (click)="updateVarient(i)" #sizeInput>{{ size }}</a>
+                    </div>
+                  </div>
+
+
+                  <div class="like-icon">
+                    <a class="facebook" href="#"><i class="fa fa-facebook"></i>like</a>
+                    <a class="twitter" href="#"><i class="fa fa-twitter"></i>tweet</a>
+                    <a class="pinterest" href="#"><i class="fa fa-pinterest"></i>save</a>
+                    <a class="google" href="#"><i class="fa fa-google-plus"></i>share</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- product details inner end -->
+
+          <!-- product details reviews start -->
+          <div class="product-details-reviews section-padding pb-0">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="product-review-info">
+                  <ul class="nav review-tab">
+                    <li>
+                      <a class="active" data-bs-toggle="tab" href="#tab_one">description</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content reviews-tab">
+                    <div class="tab-pane fade show active" id="tab_one">
+                      <div class="tab-one">
+                        <p>
+                          {{product?.description}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- product details reviews end -->
+        </div>
+        <!-- product details wrapper end -->
+      </div>
+    </div>
+  </div>
+  <!-- page main wrapper end -->
+
+  <!-- related products area end -->
+  <!-- Quick view modal end -->
+  <app-quick-model></app-quick-model>
+  <!-- offcanvas mini cart start -->
+  <app-mini-cart></app-mini-cart>
+  <!-- offcanvas mini cart end -->

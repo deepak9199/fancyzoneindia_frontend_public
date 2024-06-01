@@ -1,0 +1,56 @@
+
+
+    
+    <!-- breadcrumb area start -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-wrap">
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">login</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb area end -->
+
+    <!-- login register wrapper start -->
+    <div class="login-register-wrapper section-padding">
+        <div class="container">
+            <div class="member-area-from-wrap ">
+                <div class="col-lg-12">
+                    <div class="login-reg-form-wrap">
+                        <h5>Sign In</h5>
+                        <form (ngSubmit)="login()" #loginForm="ngForm">
+                            <div class="single-input-item">
+                                <input type="email" name="email" [(ngModel)]="email" placeholder="Email or Username" required />
+                            </div>
+                            <div class="single-input-item">
+                                <input type="password" name="password" [(ngModel)]="password" placeholder="Enter your Password" required />
+                            </div>
+                            <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
+                                       
+                                <span>If not registered Please:  <a routerLink="../register" class="forget-pwd">SignUp</a></span>
+                               
+                            </div>
+                            <div class="single-input-item">
+                                <button  type="submit" [disabled]="loginForm.invalid" class="btn btn-sqr">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+       <!-- Quick view modal end -->
+       <app-quick-model></app-quick-model>
+       <!-- offcanvas mini cart start -->
+      <app-mini-cart></app-mini-cart>
+       <!-- offcanvas mini cart end -->

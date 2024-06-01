@@ -1,0 +1,17 @@
+.size-box {
+    display: inline-block;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-left: 6px;
+  }
+  .mystyle a{
+    background-color: black;
+  }
+  .pro-size .size-box.active {
+    background-color: #81ca33;
+    color: #fff;
+  }
+  

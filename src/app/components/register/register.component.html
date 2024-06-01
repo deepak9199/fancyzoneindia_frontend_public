@@ -1,0 +1,71 @@
+
+
+   
+    <!-- breadcrumb area start -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-wrap">
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Register</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb area end -->
+
+    <!-- login register wrapper start -->
+    <div class="login-register-wrapper section-padding">
+        <div class="container">
+            <div class="member-area-from-wrap">
+                <div class="row">
+                    <!-- Register Content Start -->
+                    <div class="col-lg-12">
+                        <div class="login-reg-form-wrap sign-up-form">
+                            <h5>Singup Form</h5>
+                            <form action="#" method="post"  (ngSubmit)="register()" #registerForm="ngForm">
+                                <div class="single-input-item">
+                                    <input type="text"  name="name" [(ngModel)]="user.name" placeholder="Full Name" required />
+                                </div>
+                                <div class="single-input-item">
+                                    <input type="email"  name="email" [(ngModel)]="user.email" placeholder="Enter your Email" required />
+                                </div>
+                                <div class="single-input-item">
+                                    <input type="password"  name="password" [(ngModel)]="user.password" placeholder="Enter your password" required />
+                                </div>
+                                <div class="single-input-item">
+                                    <input type="phone"  name="phone" [(ngModel)]="user.contact" placeholder="Enter your contact Number" required />
+
+                                </div>
+                               
+                                <div class="single-input-item">
+                                    <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
+                                       
+                                        <span>If registered please:  <a routerLink="../login" class="forget-pwd">Login</a></span>
+                                       
+                                    </div>
+                                </div>
+
+                                <div class="single-input-item ">
+                                    <button  type="submit" [disabled]="registerForm.invalid" class="btn btn-sqr ">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Register Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- login register wrapper end -->
+       <!-- Quick view modal end -->
+       <app-quick-model></app-quick-model>
+       <!-- offcanvas mini cart start -->
+      <app-mini-cart></app-mini-cart>
+       <!-- offcanvas mini cart end -->

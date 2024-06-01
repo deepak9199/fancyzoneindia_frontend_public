@@ -1,0 +1,226 @@
+<main>
+  
+  <!-- breadcrumb area start -->
+  <div class="breadcrumb-area">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <div class="breadcrumb-wrap">
+                      <nav aria-label="breadcrumb">
+                          <ul class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
+                              <li class="breadcrumb-item"><a href="shop.html">shop</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">checkout</li>
+                          </ul>
+                      </nav>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- breadcrumb area end -->
+
+  <!-- checkout main wrapper start -->
+  <div class="checkout-page-wrapper section-padding">
+      <div class="container">
+          <div class="row">
+              <!-- Checkout Billing Details -->
+              <div class="col-lg-6">
+                  <div class="checkout-billing-details-wrap">
+                      <h5 class="checkout-title">Billing Details</h5>
+                      <div class="billing-form-wrap">
+                          <form  #OrderForm="ngForm">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="single-input-item">
+                                    <label for="f_name" class="required">First Name</label>
+                                    <input
+                                      [(ngModel)]="order.first_name"
+                                      name="first_name"
+                                      type="text"
+                                      placeholder="First Name"
+                                      required
+                                    />
+                                  </div>
+                                </div>
+                    
+                                <div class="col-md-6">
+                                  <div class="single-input-item">
+                                    <label
+                                      for="last_name"           
+                                      class="required"
+                                      >Last Name</label
+                                    >
+                                    <input  [(ngModel)]="order.last_name"
+                                      name="last_name"
+                                      type="text"
+                                      id="l_name"
+                                      placeholder="Last Name"
+                                      required
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                    
+                              <div class="single-input-item">
+                                <label for="email" class="required">Email Address</label>
+                                <input
+                                  type="email"
+                                  [(ngModel)]="order.email"
+                                  name="email"
+                                  id="email"
+                                  placeholder="Email Address"
+                                  required
+                                />
+                              </div>
+                    
+                              <div class="single-input-item">
+                                <label for="street-address" class="required mt-20"
+                                  >Street address</label
+                                >
+                                <input  [(ngModel)]="order.address1"
+                                  type="text"
+                                  name="address1"
+                                  id="street-address"
+                                  placeholder="Street address Line 1"
+                                  required
+                                />
+                              </div>
+                    
+                              <div class="single-input-item">
+                                <input  [(ngModel)]="order.address2"
+                                 name="address2"
+                                  type="text"
+                                  placeholder="Street address Line 2 (Optional)"
+                                />
+                              </div>
+                    
+                              <div class="single-input-item">
+                                <label for="town" class="required">Town / City</label>
+                                <input  [(ngModel)]="order.city"
+                                  name="city"
+                                  type="text"
+                                  id="town"
+                                  placeholder="Town / City"
+                                  required
+                                />
+                              </div>
+                    
+                              <div class="single-input-item">
+                                <label for="state">State</label>
+                                <input  [(ngModel)]="order.state"
+                                name="state"
+                                  type="text"
+                                  id="state"
+                                  placeholder="State / Divition"
+                                />
+                              </div>
+                    
+                              <div class="single-input-item">
+                                <label for="postcode" class="required">Postcode / ZIP</label>
+                                <input  [(ngModel)]="order.pincode"
+                                  name="pincode"
+                                  type="text"
+                                  id="postcode"
+                                  placeholder="Postcode / ZIP"
+                                  required
+                                />
+                              </div>
+                    
+                              <div class="single-input-item">
+                                <label for="phone">Phone</label>
+                                <input type="text" id="phone"  [(ngModel)]="order.contact" name="contact" placeholder="Phone" />
+                              </div>
+                    
+                            
+                    
+                              <div class="single-input-item">
+                                <label for="ordernote">Order Note</label>
+                                <textarea  [(ngModel)]="order.note"
+                                  name="note"
+                                  id="ordernote"
+                                  cols="30"
+                                  rows="3"
+                                  placeholder="Notes about your order, e.g. special notes for delivery."
+                                ></textarea>
+                              </div>
+                            </form>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Order Summary Details -->
+              <div class="col-lg-6">
+                  <div class="order-summary-details">
+                      <h5 class="checkout-title">Your Order Summary</h5>
+                      <div class="order-summary-content">
+                          <!-- Order Summary Table -->
+                          <div class="order-summary-table table-responsive text-center">
+                              <table class="table table-bordered">
+                                  <thead>
+                                      <tr>
+                                          <th>Products</th>
+                                          <th>Total</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr *ngFor="let cart of cartItems">
+                                          <td><a routerLink="../product-detail/{{cart.id}}">{{cart.category | lowercase }}<strong> × {{cart.quantity}}</strong></a>
+                                          </td>
+                                          <td>{{(cart.price * cart.quantity)| number:'1.2-2'}}</td>
+                                      </tr>
+                                   
+                                  </tbody>
+                                  <tfoot>
+                                      <tr>
+                                          <td>Sub Total</td>
+                                          <td><strong>₹{{(sub_total | async)| number:'1.2-2'}}</strong></td>
+                                      </tr>
+                                     
+                                      <tr>
+                                          <td>Shipping</td>
+                                          <td class="d-flex justify-content-center">
+                                              <ul class="shipping-type">
+                                                  <li>
+                                                      <div class="custom-control custom-radio">
+                                                          <input type="radio" id="flatrate" name="shipping" class="custom-control-input" checked />
+                                                          <label class="custom-control-label" for="flatrate">Flat
+                                                              Rate: ₹50.00</label>
+                                                      </div>
+                                                  </li>
+                                               
+                                              </ul>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>Total Amount</td>
+                                          <td><strong>₹{{(total | async)| number:'1.2-2'}} (including GST)</strong></td>
+                                      </tr>
+                                  </tfoot>
+                              </table>
+                          </div>
+                          <!-- Order Payment Method -->
+                          <div class="order-payment-method">
+                              
+                              <div class="summary-footer-area">
+                                  <div class="custom-control custom-checkbox mb-20">
+                                      <input type="checkbox" class="custom-control-input" id="terms" required />
+                                      <label class="custom-control-label" for="terms">I have read and agree to
+                                          the website <a href="index.html">terms and conditions.</a></label>
+                                  </div>
+                          <button type="submit" (click)="placeOrder()"   [disabled]="!OrderForm.valid" class="btn btn-sqr">Place Order</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- checkout main wrapper end -->
+     <!-- Quick view modal end -->
+     <app-quick-model></app-quick-model>
+     <!-- offcanvas mini cart start -->
+    <app-mini-cart></app-mini-cart>
+     <!-- offcanvas mini cart end -->
+</main>

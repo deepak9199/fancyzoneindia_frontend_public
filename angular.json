@@ -1,0 +1,128 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "venus-jewellers": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/fashionzone",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/styles.css",
+              "src/assets/css/lightgallery.css",
+              "src/assets/css/lg-zoom.css",
+              "src/assets/css/vendor/bootstrap.min.css",
+              "src/assets/css/vendor/pe-icon-7-stroke.css",
+              "src/assets/css/vendor/font-awesome.min.css",
+              "src/assets/css/plugins/slick.min.css",
+              "src/assets/css/plugins/animate.css",
+              "src/assets/css/plugins/nice-select.css",
+              "src/assets/css/plugins/jqueryui.min.css",
+              "src/assets/css/style.css"
+            ],
+            "scripts": [
+              "src/assets/js/vendor/modernizr-3.6.0.min.js",
+              "src/assets/js/vendor/jquery-3.6.0.min.js",
+              "src/assets/js/plugins/jqueryui.min.js",
+              "src/assets/js/vendor/bootstrap.bundle.min.js",
+              "src/assets/js/image-zoom.js",
+              "src/assets/js/plugins/countdown.min.js",
+              "src/assets/js/plugins/nice-select.min.js",
+             
+              "src/assets/js/plugins/image-zoom.min.js",
+              "src/assets/js/plugins/imagesloaded.pkgd.min.js",
+              "src/assets/js/plugins/ajaxchimp.js",
+              "src/assets/js/plugins/ajax-mail.js",
+              "src/assets/js/plugins/slick.min.js",
+              "src/assets/js/main.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "20mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "20mb",
+                  "maximumError": "20mb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "venus-jewellers:build:production"
+            },
+            "development": {
+              "browserTarget": "venus-jewellers:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "venus-jewellers:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css"
+            ],
+            "scripts": [
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}

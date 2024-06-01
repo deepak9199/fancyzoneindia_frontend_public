@@ -1,0 +1,31 @@
+body {
+    overflow-x: hidden;
+    background-size: cover;
+    background-color: azure;
+    background-repeat: repeat;
+  
+  }
+
+  @import 'ngx-toastr/toastr';
+  @import url('assets/lightcss/lightgallery.css'); 
+ @import url('assets/lightcss/lg-zoom.css'); 
+@import url('assets/lightcss/lg-video.css');
+@import url('assets/lightcss/lg-share.css');
+@import url('assets/lightcss/lg-rotate.css');
+@import url('assets/lightcss/lg-thumbnail.css');
+.lg-outer .lg-img-rotate{
+  bottom: 28px;
+}
+
+body {
+  margin-top: 0;
+}
+.gallery-item {
+  margin: 5px
+}
+
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
